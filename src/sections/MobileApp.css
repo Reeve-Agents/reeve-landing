@@ -1,0 +1,405 @@
+.mobile__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--sp-8);
+  align-items: center;
+}
+.mobile__copy {
+  display: grid;
+  gap: var(--sp-7);
+}
+
+.feats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3);
+}
+.feat {
+  display: grid;
+  gap: var(--sp-2);
+  align-content: start;
+  padding: var(--sp-5);
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.feat__fig {
+  width: 96px;
+  margin-bottom: var(--sp-2);
+}
+.feat h3 {
+  font-size: 18px;
+}
+.feat p {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.also {
+  display: grid;
+  gap: var(--sp-3);
+}
+.also ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+/* ---------- the two phones ---------- */
+.phones {
+  --lx: 0deg;
+  --ly: 0deg;
+  position: relative;
+  height: 640px;
+  perspective: 1600px;
+}
+.ph {
+  position: absolute;
+  width: 290px;
+  aspect-ratio: 9 / 19;
+  padding: 10px;
+  background: var(--device);
+  border: 1px solid var(--line-2);
+  border-radius: 44px;
+  transform-style: preserve-3d;
+}
+.ph--today {
+  left: 4%;
+  top: 40px;
+  transform: rotateY(calc(10deg + var(--lx))) rotateX(calc(4deg + var(--ly))) rotate(-4deg);
+  opacity: 0.94;
+}
+.ph--approve {
+  right: 4%;
+  top: 0;
+  transform: rotateY(calc(-8deg + var(--lx))) rotateX(calc(3deg + var(--ly))) rotate(2.5deg) translateZ(40px);
+}
+.ph__screen {
+  height: 100%;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 10px 16px 14px;
+  background: var(--void);
+  border-radius: 36px;
+  overflow: hidden;
+}
+.ph__status {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 6px 6px;
+}
+.ph__status span:last-child {
+  justify-self: end;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-3);
+}
+.ph__island {
+  width: 86px;
+  height: 24px;
+  background: var(--device);
+  border-radius: 12px;
+}
+
+/* phone 1: today */
+.today__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.today__name {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+.today__date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  padding: 2px 6px;
+}
+.kpi {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.kpi__label {
+  font-size: 11.5px;
+  color: var(--text-3);
+}
+.kpi__value {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.kpi__of {
+  font-size: 12px;
+  color: var(--text-2);
+}
+.kpi__track {
+  height: 5px;
+  margin-top: 6px;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.kpi__fill {
+  display: block;
+  height: 100%;
+  background: var(--spring);
+  transform-origin: 0 50%;
+}
+.kpi__note {
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--spring);
+}
+.today__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+.today__stats span {
+  display: grid;
+  gap: 2px;
+  padding: 8px;
+  font-size: 11px;
+  color: var(--text-3);
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.today__stats b {
+  font-size: 17px;
+  color: var(--text);
+  font-weight: 800;
+}
+.feed-m {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.feed-m li {
+  padding: 9px 10px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-2);
+  border-bottom: 1px solid var(--line);
+}
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 10.5px;
+  color: var(--text-3);
+  text-align: center;
+}
+.tabs .is-on {
+  color: var(--signal);
+  font-weight: 600;
+}
+.tabs i {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--void);
+  background: var(--signal);
+  border-radius: 8px;
+  padding: 0 5px;
+  margin-left: 2px;
+}
+
+/* phone 2: approval */
+.appr__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.appr__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.appr__meta {
+  font-size: 12px;
+  color: var(--text-3);
+}
+.appr__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.appr__list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.appr__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  background: var(--signal);
+  border-radius: 1px;
+}
+.appr__lock {
+  position: relative;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 124px;
+  height: 124px;
+  margin-top: 4px;
+}
+.appr__fig {
+  width: 104px;
+}
+/* The ring tightens around the padlock while the fingerprint is read. */
+.appr__ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--signal);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.12);
+  transition:
+    opacity var(--t-arrive) var(--ease-arrive),
+    transform 1200ms var(--ease-arrive);
+}
+.ph--approve.is-scan .appr__ring {
+  opacity: 1;
+  transform: scale(1);
+}
+.ph--approve.is-done .appr__ring {
+  opacity: 0;
+}
+.appr__btn {
+  display: grid;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line-2);
+  transition: background-color var(--t-arrive) var(--ease-arrive), border-color var(--t-arrive) var(--ease-arrive), color var(--t-arrive) var(--ease-arrive);
+}
+.appr__btn > span {
+  grid-area: 1 / 1;
+  padding: 12px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--t-arrive) var(--ease-arrive),
+    transform var(--t-arrive) var(--ease-arrive);
+}
+.ph--approve.is-ask .appr__btn-ask,
+.ph--approve.is-scan .appr__btn-scan,
+.ph--approve.is-done .appr__btn-done {
+  opacity: 1;
+  transform: none;
+}
+.ph--approve.is-done .appr__btn {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--void);
+}
+.appr__receipt {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--trust-text);
+  text-align: center;
+}
+
+.toast {
+  position: absolute;
+  right: 0;
+  top: 120px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px 10px 10px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--text-2);
+  background: var(--ink);
+  border: 1px solid rgba(198, 255, 51, 0.5);
+  border-radius: 12px;
+  transform: translateZ(80px);
+}
+.toast b {
+  color: var(--text);
+}
+.toast__tick {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 8px;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4 8.5 L7 11 L12 5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>")
+      center / 16px no-repeat,
+    var(--signal);
+}
+
+@media (max-width: 1100px) {
+  .mobile__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .phones {
+    max-width: 640px;
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 640px) {
+  .feats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .phones {
+    height: 620px;
+  }
+  .ph {
+    width: 250px;
+  }
+  .ph--today {
+    left: -6%;
+    top: 60px;
+  }
+  .ph--approve {
+    right: -2%;
+  }
+  .toast {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin-inline: auto;
+    transform: none;
+  }
+}

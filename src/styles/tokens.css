@@ -1,0 +1,85 @@
+/* Mirrors MASTER.md. Change MASTER.md first. */
+:root {
+  --void: #000000;
+  --ink: #001f3f;
+  --ink-2: #012a52;
+  --term: #00101f;
+  --device: #0b0b0b; /* phone body and dynamic island in the mobile scene */
+  --ink-signal: #183a3d; /* signal 12% over ink, for figure plates on active rows */
+  --deep: #00545f;
+  --paper: #f6f7ed;
+  --signal: #c6ff33;
+  --volt: #d6fb00;
+  --spring: #dbe64c;
+  --mint: #ecffb6;
+  --auditor: #7d39eb;
+  --auditor-text: #b48cff;
+  --trust: #1e488f;
+  --trust-text: #7fa8ff;
+  --green: #00804c;
+  --mantis: #74c365;
+  --danger: #ff8a8a;
+
+  --text: var(--paper);
+  --text-2: rgba(246, 247, 237, 0.72);
+  --text-3: rgba(246, 247, 237, 0.5);
+  --line: rgba(246, 247, 237, 0.12);
+  --line-2: rgba(246, 247, 237, 0.22);
+  --signal-12: rgba(198, 255, 51, 0.12);
+  --paper-78: rgba(246, 247, 237, 0.78);
+  --paper-38: rgba(246, 247, 237, 0.38);
+  --paper-14: rgba(246, 247, 237, 0.14);
+  --ink-trust: #04203f; /* trust 12% over ink: anchor blocks */
+  /* Spreadsheet illustration in the problem scene only. */
+  --sheet-rule: rgba(0, 0, 0, 0.14);
+  --sheet-head: rgba(0, 0, 0, 0.05);
+  --sheet-muted: rgba(0, 0, 0, 0.55);
+  --sheet-warn: #fff3b0;
+  --sheet-bad: #ffd6d6;
+  --sheet-bad-text: #b00020;
+  --auditor-16: rgba(125, 57, 235, 0.16);
+  --paper-06: rgba(246, 247, 237, 0.06);
+
+  --font-display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --fs-mega: clamp(120px, 26vw, 400px);
+  --fs-h1: clamp(40px, 5vw, 72px);
+  --fs-h2: clamp(34px, 4.2vw, 60px);
+  --fs-h3: 22px;
+  --fs-lede: 19px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-label: 12px;
+  --fs-data: 13px;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+
+  --r: 2px;
+  --r-device: 28px;
+  --container: 1280px;
+  --gutter: clamp(16px, 4vw, 48px);
+
+  --t-micro: 150ms;
+  --t-arrive: 330ms;
+  --t-leave: 220ms;
+  --t-camera: 900ms;
+  --t-headline: 700ms;
+  --t-roll: 900ms;
+  --stagger: 60ms;
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-leave: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-camera: cubic-bezier(0.65, 0, 0.35, 1);
+
+  color-scheme: dark;
+}

@@ -1,0 +1,262 @@
+/* A compact band, not a full scene: copy on the left, the parsers wired into the Auditor on the right. */
+.scene.mdl {
+  padding-block: var(--sp-9);
+  border-top: 1px solid var(--line);
+}
+.mdl__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--sp-5) var(--sp-8);
+  align-items: center;
+}
+.mdl__copy {
+  display: grid;
+  gap: var(--sp-4);
+}
+.mdl__copy h2 {
+  font-size: clamp(30px, 3.2vw, 46px);
+}
+.mdl__lede {
+  font-size: var(--fs-body);
+  color: var(--text-2);
+  max-width: 44ch;
+}
+
+.mdl-graph {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  column-gap: clamp(56px, 7vw, 104px);
+  align-items: center;
+}
+.mdl-wires {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.mdl-wire {
+  fill: none;
+  stroke: var(--line-2);
+  stroke-width: 1.5;
+}
+.mdl-wire--lit {
+  stroke: var(--signal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(198, 255, 51, 0.6));
+}
+.mdl-wire__dot {
+  fill: var(--signal);
+  filter: drop-shadow(0 0 8px var(--signal));
+}
+
+.mdl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.mdl-row {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name chip"
+    "meta meta"
+    "bar price";
+  gap: 4px var(--sp-3);
+  align-items: center;
+  padding: 10px 14px;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+  background: var(--ink);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  cursor: pointer;
+  transition:
+    border-color var(--t-arrive) var(--ease-arrive),
+    background-color var(--t-arrive) var(--ease-arrive);
+}
+/* The port where the wire leaves the row. */
+.mdl-row::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4.5px;
+  background: var(--void);
+  border: 1.5px solid var(--line-2);
+  border-radius: 50%;
+  transition:
+    border-color var(--t-arrive) var(--ease-arrive),
+    background-color var(--t-arrive) var(--ease-arrive);
+}
+.mdl-row:hover {
+  background: var(--ink-2);
+}
+.mdl-row.is-active {
+  border-color: var(--signal);
+}
+.mdl-row.is-active::after {
+  border-color: var(--signal);
+  background: var(--signal);
+}
+.mdl-row:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+.mdl-row__name {
+  grid-area: name;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.25;
+}
+.mdl-row__chip {
+  grid-area: chip;
+  justify-self: end;
+  font-size: 11px;
+  padding: 3px 7px;
+}
+.mdl-chip--built {
+  border-style: dashed;
+  color: var(--text-3);
+}
+.mdl-row__meta {
+  grid-area: meta;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+/* Output price against the dearest model: Haiku's sliver is the point. */
+.mdl-row__bar {
+  grid-area: bar;
+  height: 4px;
+  background: var(--paper-06);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.mdl-row__bar span {
+  display: block;
+  height: 100%;
+  min-width: 2px;
+  background: var(--paper-38);
+  border-radius: var(--r);
+  transition: background-color var(--t-arrive) var(--ease-arrive);
+}
+.mdl-row.is-active .mdl-row__bar span {
+  background: var(--paper);
+}
+.mdl-row__bar.is-varies span {
+  background: repeating-linear-gradient(90deg, var(--paper-14) 0 6px, transparent 6px 12px);
+}
+.mdl-row__price {
+  grid-area: price;
+  justify-self: end;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
+.mdl-auditor {
+  display: grid;
+  gap: var(--sp-3);
+  justify-items: start;
+  padding: var(--sp-5);
+  background: var(--ink);
+  border: 1px solid var(--auditor);
+  border-radius: var(--r);
+}
+.mdl-auditor__fig {
+  width: min(100%, 180px);
+}
+.mdl-auditor__name {
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--auditor-text);
+}
+.mdl-auditor__checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.mdl-auditor__checks li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--text-2);
+}
+.mdl-auditor__checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--auditor);
+}
+
+.mdl__note {
+  grid-column: 2;
+  max-width: 88ch;
+}
+
+@media (max-width: 1100px) {
+  .mdl__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mdl__copy {
+    max-width: 680px;
+  }
+  .mdl__note {
+    grid-column: auto;
+  }
+}
+
+/* Phones: the parsers stack, their wires drop down a rail on the right into the Auditor below. */
+@media (max-width: 899px) {
+  .mdl-graph {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 48px;
+  }
+  .mdl-list {
+    margin-right: 24px;
+  }
+  .mdl-auditor {
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: var(--sp-4);
+    align-items: center;
+  }
+  .mdl-auditor__fig {
+    grid-row: span 2;
+    width: 96px;
+  }
+  .mdl-auditor__checks,
+  .mdl-auditor .chip {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 480px) {
+  .mdl-row {
+    grid-template-areas:
+      "name name"
+      "chip chip"
+      "meta meta"
+      "bar price";
+    padding: 10px 12px;
+  }
+  .mdl-row__chip {
+    justify-self: start;
+  }
+}

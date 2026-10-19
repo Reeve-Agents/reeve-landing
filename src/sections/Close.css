@@ -1,0 +1,118 @@
+.close {
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+}
+/* The hero's light returns for the sign-off. */
+.close__glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(40% 50% at 28% 60%, rgba(214, 251, 0, 0.55) 0%, rgba(214, 251, 0, 0) 70%),
+    radial-gradient(50% 60% at 34% 52%, rgba(0, 84, 95, 0.9) 0%, rgba(0, 84, 95, 0) 74%),
+    radial-gradient(60% 70% at 20% 30%, rgba(30, 72, 143, 0.6) 0%, rgba(0, 31, 63, 0) 78%);
+  filter: blur(40px);
+}
+
+.close__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--sp-7);
+  align-items: center;
+}
+.close__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: calc(var(--fs-mega) * 0.9);
+}
+.close__r {
+  grid-area: 1 / 1;
+  font-size: var(--fs-mega);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: var(--mint);
+  user-select: none;
+}
+.close__r--soft {
+  filter: blur(36px);
+  opacity: 0;
+}
+.close__r--sharp {
+  color: var(--paper);
+}
+
+.close__copy {
+  display: grid;
+  gap: var(--sp-5);
+}
+.close__def {
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--text-2);
+  max-width: 34ch;
+}
+.close__def .voice {
+  color: var(--text);
+  font-size: 1.2em;
+}
+.close__copy h2,
+.close__title {
+  font-size: clamp(44px, 6vw, 88px);
+  line-height: 0.95;
+}
+.close__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding-block: var(--sp-7) calc(var(--sp-7) + env(safe-area-inset-bottom, 0px));
+}
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+.footer__brand {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+.footer__line {
+  font-size: var(--fs-small);
+  color: var(--text-3);
+}
+.footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--sp-5);
+}
+.footer__links a {
+  font-size: var(--fs-small);
+  color: var(--text-2);
+  text-decoration: none;
+}
+.footer__links a:hover {
+  color: var(--text);
+}
+
+@media (max-width: 860px) {
+  .close__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .close__mark {
+    height: auto;
+    justify-items: start;
+  }
+}

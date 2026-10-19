@@ -1,0 +1,290 @@
+.flowrun__head {
+  max-width: 860px;
+}
+
+/* The canvas: a flow-editor dot grid behind the node graph. */
+.flow {
+  position: relative;
+  margin-top: var(--sp-8);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: clamp(56px, 9vw, 150px);
+  align-items: center;
+  padding: var(--sp-7) var(--sp-6);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background:
+    radial-gradient(circle at 1px 1px, var(--paper-14) 1px, transparent 1.5px) 0 0 / 22px 22px,
+    var(--void);
+}
+.flow__wires {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.wire {
+  fill: none;
+  stroke: var(--line-2);
+  stroke-width: 1.5;
+}
+.wire--lit {
+  stroke: var(--signal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(198, 255, 51, 0.6));
+}
+.wire__dot {
+  fill: var(--signal);
+  filter: drop-shadow(0 0 8px var(--signal));
+}
+
+.flow__col {
+  display: grid;
+  gap: var(--sp-3);
+  align-content: center;
+}
+.flow__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: var(--sp-1);
+}
+
+/* Nodes, with ports where the wires meet them. */
+.node {
+  position: relative;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 10px 14px 10px 10px;
+  background: var(--ink);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  transition:
+    border-color var(--t-arrive) var(--ease-arrive),
+    transform var(--t-arrive) var(--ease-arrive);
+}
+.node::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4.5px;
+  background: var(--void);
+  border: 1.5px solid var(--line-2);
+  border-radius: 50%;
+  transition: border-color var(--t-arrive) var(--ease-arrive), background-color var(--t-arrive) var(--ease-arrive);
+}
+.node--in::after {
+  right: -5px;
+}
+.node--out::after {
+  left: -5px;
+}
+.node.is-active {
+  border-color: var(--signal);
+  transform: translateX(0) scale(1.02);
+}
+.node.is-active::after {
+  border-color: var(--signal);
+  background: var(--signal);
+}
+.node__icon {
+  width: 52px;
+}
+.node__text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.node__name {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.25;
+}
+.node__meta {
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--text-3);
+}
+
+/* The core: Reeve and the four checks every action passes. */
+.core {
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-5);
+  background: var(--ink);
+  border: 1px solid rgba(198, 255, 51, 0.5);
+  border-radius: var(--r);
+}
+.core__head {
+  display: grid;
+  gap: 2px;
+}
+.core__brand {
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+}
+.core__rule {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-3);
+}
+.core__day {
+  font-size: 14px;
+  color: var(--text-2);
+  padding: 8px 12px;
+  background: var(--void);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.core__day b {
+  color: var(--signal);
+  font-weight: 600;
+}
+.gates {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-2);
+}
+.gate {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  padding: 10px;
+  background: var(--void);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.gate__tick {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+}
+.gate__tick rect {
+  fill: var(--signal);
+  stroke: none;
+}
+.gate__tick path {
+  fill: none;
+  stroke: var(--void);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gate__text {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.gate__label {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.gate__value {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* What just happened, in plain words. */
+.flow-now {
+  margin-top: var(--sp-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-3) var(--sp-4);
+  min-height: 44px;
+}
+.flow-now__day {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--void);
+  background: var(--signal);
+  border-radius: var(--r);
+  padding: 4px 10px;
+}
+.flow-now__text {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.flowrun__caption {
+  margin-top: var(--sp-3);
+  max-width: 90ch;
+}
+
+@media (max-width: 1100px) {
+  .flow {
+    column-gap: 56px;
+    padding: var(--sp-6) var(--sp-4);
+  }
+  .node {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+  .node__icon {
+    width: 40px;
+  }
+}
+
+/* Phones: the graph turns into a column, tools on top, the work below. */
+@media (max-width: 899px) {
+  .flow {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 64px;
+    padding: var(--sp-5) var(--sp-4);
+  }
+  .flow__col {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .flow__label {
+    grid-column: 1 / -1;
+  }
+  .node {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+    gap: 4px;
+    padding: 8px 4px;
+  }
+  .node__icon {
+    width: 40px;
+  }
+  .node__name {
+    font-size: 11.5px;
+  }
+  .node__meta {
+    display: none;
+  }
+  .node--in::after {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -5px;
+    margin: 0 0 0 -4.5px;
+  }
+  .node--out::after {
+    left: 50%;
+    top: -5px;
+    margin: 0 0 0 -4.5px;
+  }
+  .core {
+    padding: var(--sp-4);
+  }
+}
+@media (max-width: 400px) {
+  .gates {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

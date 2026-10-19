@@ -1,0 +1,218 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100svh;
+  padding-top: 112px;
+  padding-bottom: var(--sp-8);
+  display: grid;
+  align-content: center;
+  gap: var(--sp-7);
+}
+
+/* The page's one light source: the grain gradient, darkened behind the copy. */
+.hero__light {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+/* volt -> deep teal -> ink, drifting slowly: the light the whole page is lit by. */
+.hero__glow {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+.hero__glow--a {
+  inset: -10% -20% -20% 25%;
+  background:
+    radial-gradient(34% 40% at 78% 82%, rgba(214, 251, 0, 0.9) 0%, rgba(214, 251, 0, 0) 70%),
+    radial-gradient(50% 56% at 62% 64%, rgba(0, 84, 95, 1) 0%, rgba(0, 84, 95, 0) 74%),
+    radial-gradient(64% 60% at 74% 20%, rgba(30, 72, 143, 0.75) 0%, rgba(0, 31, 63, 0) 76%);
+  filter: blur(40px);
+  animation: hero-drift-a 22s ease-in-out infinite alternate;
+}
+.hero__glow--b {
+  inset: 10% -10% -10% 45%;
+  background: radial-gradient(30% 34% at 50% 50%, rgba(116, 195, 101, 0.45) 0%, rgba(116, 195, 101, 0) 70%);
+  filter: blur(50px);
+  animation: hero-drift-b 17s ease-in-out infinite alternate;
+}
+@keyframes hero-drift-a {
+  from {
+    transform: translate3d(-2%, 2%, 0) rotate(0deg) scale(1);
+  }
+  to {
+    transform: translate3d(3%, -3%, 0) rotate(6deg) scale(1.05);
+  }
+}
+@keyframes hero-drift-b {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-8%, -6%, 0);
+  }
+}
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.72) 30%, rgba(0, 0, 0, 0) 62%),
+    linear-gradient(0deg, var(--void) 0%, rgba(0, 0, 0, 0) 26%);
+}
+.hero__grain {
+  z-index: -1;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4.4fr) minmax(0, 7.6fr);
+  align-items: center;
+  gap: var(--sp-6);
+}
+
+.hero__copy {
+  display: grid;
+  gap: var(--sp-5);
+  align-content: center;
+  max-width: 540px;
+}
+.hero .container {
+  max-width: calc(1440px + var(--gutter) * 2);
+}
+.hero__copy h1 .voice {
+  display: block;
+  color: var(--text);
+  margin-top: 6px;
+}
+.hero__copy .lede b {
+  color: var(--text);
+  font-weight: 600;
+}
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.hero__for {
+  font-size: 15px;
+  color: var(--text-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  align-items: center;
+}
+
+.hero__live {
+  display: grid;
+  gap: var(--sp-2);
+}
+/* The two SOPs that passed on CreateOS, each a link to its live run below. */
+.hero__case {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  background: rgba(0, 0, 0, 0.35);
+  transition:
+    border-color var(--t-micro) var(--ease-arrive),
+    background-color var(--t-micro) var(--ease-arrive);
+}
+.hero__case span:last-child {
+  font-weight: 400;
+  color: var(--text-3);
+}
+.hero__case:hover {
+  border-color: rgba(198, 255, 51, 0.5);
+  background: var(--paper-06);
+}
+.hero__case-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+.hero__for.hero__next {
+  align-items: baseline;
+  font-size: 14px;
+  color: var(--text-3);
+}
+
+.rotator {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  height: 1.4em;
+}
+.rotator__word {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--signal);
+  white-space: nowrap;
+}
+
+.hero__metrics {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+.metric {
+  display: grid;
+  gap: var(--sp-1);
+  padding: var(--sp-5) var(--sp-5) 0 0;
+}
+.metric + .metric {
+  padding-left: var(--sp-5);
+  border-left: 1px solid var(--line);
+}
+.metric__label {
+  order: 2;
+  font-size: var(--fs-small);
+  color: var(--text-2);
+}
+.metric__value {
+  order: 1;
+  margin: 0;
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.hero__source {
+  margin-top: var(--sp-4);
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    padding-top: 96px;
+  }
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero__copy {
+    max-width: 640px;
+  }
+  .hero__scrim {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.55) 45%, var(--void) 100%);
+  }
+}
+
+@media (max-width: 680px) {
+  .hero__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .metric:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}

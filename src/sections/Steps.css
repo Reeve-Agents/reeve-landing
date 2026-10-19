@@ -1,0 +1,214 @@
+.steps {
+  position: relative;
+}
+.steps__pin {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: var(--sp-6);
+  padding-block: var(--sp-9) var(--sp-7);
+  overflow: hidden;
+}
+.steps__head {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.steps__mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 92%, transparent 100%);
+}
+.steps__track {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  gap: var(--sp-5);
+  padding-left: max(var(--gutter), calc((100vw - var(--container)) / 2));
+  padding-right: var(--gutter);
+  width: max-content;
+  will-change: transform;
+}
+
+.step {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(78vw, 980px);
+  min-height: 440px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--sp-5) var(--sp-7);
+  padding: var(--sp-7);
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+/* The step number is the sequence the visitor follows, set large and faded. */
+.step__num {
+  position: absolute;
+  right: var(--sp-5);
+  bottom: -0.18em;
+  font-size: clamp(160px, 18vw, 280px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: rgba(246, 247, 237, 0.05);
+  pointer-events: none;
+}
+.step__copy {
+  display: grid;
+  gap: var(--sp-4);
+  align-content: start;
+}
+.step__name {
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.step__text {
+  font-size: var(--fs-lede);
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 34ch;
+}
+.step__fig {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  width: 100%;
+}
+.step__detail {
+  grid-column: 1;
+  align-self: end;
+  position: relative;
+  z-index: 1;
+}
+
+.steps__progress {
+  height: 2px;
+}
+.steps__bar {
+  display: block;
+  height: 2px;
+  background: var(--signal);
+  transform-origin: 0 50%;
+}
+
+/* step details */
+.sd-chat {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  background: var(--ink-2);
+  border-radius: var(--r);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.sd-chat mark {
+  background: var(--signal);
+  color: var(--void);
+  padding: 0 3px;
+  border-radius: 1px;
+}
+.sd-cards {
+  display: grid;
+  gap: var(--sp-2);
+}
+.sd-card {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--void);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  font-size: 14px;
+}
+.sd-card__id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--signal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.sd-card--q {
+  border-style: dashed;
+  border-color: var(--line-2);
+}
+.sd-card--q .sd-card__id {
+  color: var(--text-3);
+}
+.sd-stat {
+  display: grid;
+  gap: 4px;
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--line-2);
+}
+.sd-stat strong {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--signal);
+}
+.sd-stat span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-3);
+}
+.sd-stat--auditor strong {
+  color: var(--auditor-text);
+}
+.sd-approve {
+  display: grid;
+  gap: var(--sp-3);
+  justify-items: start;
+  font-size: 16px;
+  font-weight: 600;
+}
+.sd-approve__btn {
+  font-size: 14px;
+  color: var(--void);
+  background: var(--signal);
+  padding: 10px 14px;
+  border-radius: var(--r);
+}
+
+@media (max-width: 1023px) {
+  .steps__mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .steps__pin {
+    min-height: 0;
+    padding-block: var(--sp-9);
+  }
+  .steps__track {
+    width: auto;
+    flex-direction: column;
+    padding-inline: max(var(--gutter), env(safe-area-inset-left, 0px));
+  }
+  .step {
+    width: 100%;
+  }
+  .steps__progress {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .step {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    padding: var(--sp-5);
+    min-height: 0;
+  }
+  .step__fig {
+    grid-column: 1;
+    grid-row: auto;
+    max-width: 280px;
+  }
+  .step__detail {
+    grid-column: 1;
+  }
+}

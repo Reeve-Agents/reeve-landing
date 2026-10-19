@@ -1,0 +1,74 @@
+/* The sandbox is the centre of the diagram; the other three guards sit around it. */
+.trust__map {
+  margin-top: var(--sp-8);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-areas:
+    "llm box keys"
+    "llm box money";
+  gap: var(--sp-5);
+}
+.guard {
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  padding: var(--sp-5);
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.guard p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.guard__fig {
+  width: 100%;
+}
+.guard--llm {
+  grid-area: llm;
+  align-self: center;
+}
+.guard--box {
+  grid-area: box;
+  border-color: rgba(198, 255, 51, 0.45);
+  padding: var(--sp-6);
+}
+.guard--box h3 {
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+.guard--keys {
+  grid-area: keys;
+  border-color: var(--trust);
+}
+.guard--money {
+  grid-area: money;
+}
+.guard--keys .guard__fig,
+.guard--money .guard__fig {
+  max-width: 200px;
+}
+
+@media (max-width: 1023px) {
+  .trust__map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "box box"
+      "llm keys"
+      "money money";
+  }
+  .guard--llm {
+    align-self: stretch;
+  }
+}
+@media (max-width: 600px) {
+  .trust__map {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "box"
+      "llm"
+      "keys"
+      "money";
+  }
+}
