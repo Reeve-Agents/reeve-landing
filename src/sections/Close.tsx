@@ -3,6 +3,7 @@ import Magnet from "../components/Magnet";
 import SplitText from "../components/SplitText";
 import { gsap, useGSAP, useReducedMotion } from "../lib/motion";
 import { useReveal } from "../lib/reveal";
+import { START_URL } from "../lib/app";
 import "./Close.css";
 
 export function Close() {
@@ -51,12 +52,12 @@ export function Close() {
           />
           <div className="close__ctas" data-reveal>
             <Magnet maxOffset={8} magnetStrength={3} padding={60} spring={{ stiffness: 170, damping: 22, mass: 1 }}>
-              <a className="btn" href="#run">
-                See it run
+              <a className="btn" href={START_URL}>
+                Start free
               </a>
             </Magnet>
-            <a className="btn btn--ghost" href="#top">
-              Back to top
+            <a className="btn btn--ghost" href="#run">
+              See it run
             </a>
           </div>
         </div>

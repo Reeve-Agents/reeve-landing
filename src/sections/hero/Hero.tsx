@@ -5,6 +5,7 @@ import { RollNumber } from "../../components/RollNumber";
 import { Rotator } from "../../components/Rotator";
 import { NEXT_BUSINESSES, RUN } from "../../data/kosMelati";
 import { MM_RUN } from "../../data/minimarket";
+import { START_URL } from "../../lib/app";
 import { SplitText, T, gsap, useGSAP, useReducedMotion } from "../../lib/motion";
 import "./Hero.css";
 import { HeroStage } from "./HeroStage";
@@ -56,12 +57,12 @@ export function Hero() {
           </p>
           <div className="hero__ctas">
             <Magnet maxOffset={8} magnetStrength={3} padding={60} spring={{ stiffness: 170, damping: 22, mass: 1 }}>
-              <a className="btn" href="#run">
-                See it run
+              <a className="btn" href={START_URL}>
+                Start free
               </a>
             </Magnet>
-            <a className="btn btn--ghost" href="#how">
-              How it works
+            <a className="btn btn--ghost" href="#run">
+              See it run
             </a>
           </div>
           <div className="hero__live">

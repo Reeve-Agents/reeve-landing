@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SIGN_IN_URL, START_URL } from "../lib/app";
 import "./Nav.css";
 
 const LINKS = [
@@ -33,9 +34,14 @@ export function Nav() {
             ))}
           </ul>
         </nav>
-        <a className="btn nav__cta" href="#run">
-          See it run
-        </a>
+        <div className="nav__actions">
+          <a className="nav__signin" href={SIGN_IN_URL}>
+            Sign in
+          </a>
+          <a className="btn nav__cta" href={START_URL}>
+            Start free
+          </a>
+        </div>
       </div>
     </header>
   );
