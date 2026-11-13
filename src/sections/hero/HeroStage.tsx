@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { Figure, type FigureName, type FigureTone } from "../../components/Figure";
-import { RECEIPT, RULES, RUN, RUN_LOG, SOP_LINES, linesUpTo, roomsOnDay } from "../../data/kosMelati";
+import { RULES, RUN, RUN_LOG, SOP_LINES, linesUpTo, roomsOnDay } from "../../data/kosMelati";
 import { T, gsap, useGSAP, useInView, useReducedMotion } from "../../lib/motion";
 import "./HeroStage.css";
 
@@ -473,7 +473,7 @@ function ApproveBody({ active, run, reduced }: BodyProps) {
       <span className="phone__meta">
         8 rules · Auditor PASS
         <br />
-        receipt {RECEIPT.receipt.slice(0, 8)}…
+        receipt {RUN.receipt.slice(0, 8)}…
       </span>
       <Figure name="Padlock" className="phone__fig" plate="var(--void)" intensity={0.8} play={active && !reduced} />
       <span className="phone__state">

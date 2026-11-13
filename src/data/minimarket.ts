@@ -1,7 +1,7 @@
 /**
  * Pack 2, real data only. Sources:
  * - fixtures/minimarket/sop.md and rulebook.json (Minimarket Berkah's SOP and the compiled rules)
- * - fixtures/minimarket/sim-events.json (the events CreateOS run smvdjl83a-1 produced on 18 Oct 2026:
+ * - fixtures/minimarket/sim-events.json (the events CreateOS run run_mwf3h24w produced on 13 Nov 2026:
  *   24 items, 30 simulated days, two suppliers)
  * Every figure is counted from those events, through the same pack view the owner app renders.
  */

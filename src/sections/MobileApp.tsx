@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Figure } from "../components/Figure";
-import { RECEIPT, RUN, TODAY } from "../data/kosMelati";
+import { RUN, TODAY } from "../data/kosMelati";
 import { T, gsap, useGSAP, useInView, useReducedMotion } from "../lib/motion";
 import { useReveal } from "../lib/reveal";
 import "./MobileApp.css";
@@ -192,7 +192,7 @@ export function MobileApp() {
                 <span className="appr__btn-scan">Reading fingerprint</span>
                 <span className="appr__btn-done">Approved</span>
               </span>
-              <span className="appr__receipt">receipt {RECEIPT.receipt.slice(0, 8)}…</span>
+              <span className="appr__receipt">receipt {RUN.receipt.slice(0, 8)}…</span>
             </div>
           </div>
 

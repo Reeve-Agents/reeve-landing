@@ -1,8 +1,8 @@
 /**
  * Real data only. Sources:
  * - fixtures/kos-melati/sop.md and rulebook.json (the owner's SOP and the compiled rules)
- * - .reeve/db.json run run_mvdetcvcug1b on CreateOS, 18 Oct 2026 (log, timings, verdict)
- * - .reeve/ledger.jsonl (receipts and anchors)
+ * - run run_mwf3i3zs on CreateOS, 13 Nov 2026 (log, timings, verdict, receipt), recorded through runAttempt's onLog
+ * - .reeve/ledger.jsonl (receipts and anchors of the 18 Oct 2026 demo session, shown in the Proof section)
  * - fixtures/kos-melati/sim-events.json (the 185 events that run produced: 30 rooms, 45 days)
  */
 
@@ -46,15 +46,16 @@ export const RULES: Rule[] = [
 ];
 
 export const RUN = {
-  id: "run_mvdetcvcug1b",
-  date: "18 Oct 2026",
-  sandbox: "sb-01m56s4yz8k9s4z7y9k3a91bwk",
+  id: "run_mwf3i3zs",
+  date: "13 Nov 2026",
+  sandbox: "sb-01m7ap9sswxw6hvpv515my5bdt",
+  receipt: "69936413d48efb1f",
   builderTests: 7,
   specCases: 11,
-  mutants: 29,
-  seconds: 3.9,
-  files: 40,
-  execMs: 176.29,
+  mutants: 61,
+  seconds: 4.4,
+  files: 15,
+  execMs: 271.72,
   rulesLines: 73,
   questions: 5,
   rooms: 30,
@@ -63,15 +64,15 @@ export const RUN = {
 
 export const RUN_LOG: { ms: number; text: string; tone?: "ok" | "lock" | "aud" | "trust" }[] = [
   { ms: 0, text: "queued job for rulebook on createos" },
-  { ms: 4, text: "compiled rules.py (73 lines) from rulebook ac632db3" },
-  { ms: 5, text: "auditor prepared 11 spec cases and 29 planted defects", tone: "aud" },
-  { ms: 977, text: "sandbox sb-01m56s4y created · egress locked", tone: "lock" },
-  { ms: 2752, text: "uploaded 40 files" },
-  { ms: 2754, text: "exec python3 -E -s -m reeve_runtime.job job" },
-  { ms: 3658, text: "exit 0 · exec 176.29 ms", tone: "ok" },
-  { ms: 3888, text: "sandbox destroyed" },
-  { ms: 3893, text: "receipt 30f17bb7… → ledger #9", tone: "trust" },
-  { ms: 3894, text: "auditor verdict: PASS", tone: "ok" },
+  { ms: 4, text: "compiled rules.py (73 lines) from rulebook 52f7ded6" },
+  { ms: 4, text: "auditor prepared 11 spec cases and 61 planted defects", tone: "aud" },
+  { ms: 1055, text: "sandbox sb-01m7ap9s created · egress locked", tone: "lock" },
+  { ms: 3102, text: "uploaded 15 files" },
+  { ms: 3102, text: "exec python3 -E -s -m reeve_runtime.job job" },
+  { ms: 4116, text: "exit 0 · exec 271.72 ms", tone: "ok" },
+  { ms: 4366, text: "sandbox destroyed" },
+  { ms: 4367, text: "receipt 69936413…", tone: "trust" },
+  { ms: 4367, text: "auditor verdict: PASS", tone: "ok" },
 ];
 
 export const EGRESS_PROBE = [
